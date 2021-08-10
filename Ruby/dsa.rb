@@ -24,3 +24,10 @@ def reverse(x)
     
     result
 end
+
+def is_palindrome(x)
+    stir = x.to_s;
+    stirReverse = stir.reverse;
+    
+    return stir == stirReverse
+end

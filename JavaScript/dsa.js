@@ -21,3 +21,10 @@ var reverse = function(x) {
     if (y >= 2**31-1 || -y <= -(2**31)) return 0;
     return x < 0 ?  -y : y  
 };
+
+var isPalindrome = function(x) {
+    let stir = String(x);
+    let stirReverse = stir.split('').reverse().join('');
+    
+    return stir === stirReverse;
+};
