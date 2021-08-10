@@ -60,3 +60,15 @@ def roman_to_int(s)
     return result;
         
 end
+
+def longest_common_prefix(strs)
+    return '' if strs.empty?
+    return strs.pop if strs.length ==1
+    one_of_arr = strs.pop
+    prefix = ''
+    one_of_arr.each_char do |char|
+      return prefix if strs.any? { |str| !str.start_with?(prefix + char) }
+      prefix += char
+    end
+    prefix
+end
