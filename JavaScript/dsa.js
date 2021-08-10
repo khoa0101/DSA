@@ -28,3 +28,27 @@ var isPalindrome = function(x) {
     
     return stir === stirReverse;
 };
+
+var romanToInt = function(s) {
+    let map = new Map();
+    map.set("I", 1);
+    map.set("V", 5);
+    map.set("X", 10);
+    map.set("L", 50);
+    map.set("C", 100);
+    map.set("D", 500);
+    map.set("M", 1000);
+    let str = s.split('').map((el) => map.get(el));
+    let n = str.length;
+    let result = str[n - 1];
+    
+    for (let i = n - 1; i > 0; i--){
+        if (str[i] <= str[i - 1]) {
+        result += str[i - 1];
+        } else {
+        result -= str[i - 1];
+        }
+    }
+        
+    return result;
+};

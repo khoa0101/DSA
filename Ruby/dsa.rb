@@ -31,3 +31,32 @@ def is_palindrome(x)
     
     return stir == stirReverse
 end
+
+def roman_to_int(s)
+    hash = {}
+    
+    hash["I"] = 1;
+    hash["V"] = 5;
+    hash["X"] = 10;
+    hash["L"] = 50;
+    hash["C"] = 100;
+    hash["D"] = 500;
+    hash["M"] = 1000;
+    
+    str = s.split('').map { |el| hash[el]};
+    length = str.length();
+    result = str[-1];
+    i = length - 1;
+    
+    while (i > 0)
+        if (str[i] <= str[i - 1])
+            result += str[i - 1];
+        else
+            result -= str[i - 1];    
+        end
+        i -= 1;
+    end
+    
+    return result;
+        
+end
