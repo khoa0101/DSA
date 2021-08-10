@@ -17,4 +17,18 @@ public:
         
         return v;
     }
+
+    int reverse(int x) {
+        int result = 0;
+
+        do {
+            if (result > (std::numeric_limits<int>::max() / 10) || (result < std::numeric_limits<int>::min() / 10)) {
+                return 0;
+            }
+
+            result = result * 10 + x % 10;
+        } while (x /= 10);
+
+        return result;
+    }
 };
