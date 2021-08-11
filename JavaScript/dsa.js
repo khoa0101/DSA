@@ -62,3 +62,42 @@ var longestCommonPrefix = function(strs) {
  
   return strs[0].substr(0, i);
 };
+
+function isInside(n, x, y)
+{
+    return (x >= 0 && x <= n && y >= 0 && y <= n);
+}
+
+var minStepToReachTarget = function(KnightPos, TargetPos, N)
+{
+    let visit = new Set();
+    visit.add(`${KnightPos[0]}-${KnightPos[1]}`);
+    let queue = [KnightPos];
+    let dir = [[1, 2],[1,-2],[-1,2],[-1,-2],[2,1],[2,-1],[-2,1],[-2,-1]];
+      let targetX = TargetPos[0];
+      let targetY = TargetPos[1];
+    let count = 0;
+
+    while(queue.length !== 0){
+        let totalMove = queue.length; 
+        for (let i = 0; i < totalMove; i++){
+        let currentPos = queue.shift();
+        let currentX = currentPos[0];
+        let currentY = currentPos[1];
+        if (currentX === targetX && currentY === targetY) return count;
+            for (let i = 0; i < dir.length; i++){
+                let nextPos = [currentPos[0] + dir[i][0], currentPos[1] + dir[i][1]];
+                if (isInside(N, nextPos[0], nextPos[1]) && !visit.has(`${nextPos[0]}-${nextPos[1]}`)){
+                    if (nextPos[0] === targetX && nextPos[1] === targetY) return ++count;
+                      visit.add(`${nextPos[0]}-${nextPos[1]}`);
+                      queue.push(nextPos);
+                  }
+            }  
+        } 
+        count++;
+      }
+        
+    return -1; 
+}
+
+
