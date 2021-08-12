@@ -149,3 +149,18 @@ var mergeTwoLists = function(l1, l2) {
     
     return result.next;
 };
+
+var removeDuplicates = function(nums) {
+    let count = 0;
+    
+    for (let i = 0; i < nums.length; i++){
+        if (i + 1 < nums.length && nums[i] === nums[i + 1] && nums[i] != undefined){
+            nums.splice(i, 1);
+            nums.push(undefined);
+            count++;
+            i--;
+        }
+    }
+    
+    return nums.length - count;
+};
