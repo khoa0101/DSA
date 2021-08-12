@@ -100,4 +100,33 @@ var minStepToReachTarget = function(KnightPos, TargetPos, N)
     return -1; 
 }
 
+var isValid = function(s) {
+    // have a stack that tracks opening characters
+    // if encounter a closing character, i will pop the stack if and only if the top of the stack is the matching opening character
+    // return true if the stack is empty
+    
+    let stack = [];
+    
+    if (s.length % 2 === 1) return false;
+    if (s[0] === "]" || s[0] === "}" || s[0] === ")") return false;
+    
+    for (let i = 0; i < s.length; i++){
+        if (s[i] === "(" || s[i] === "{" || s[i] === "["){
+            stack.unshift(s[i]);
+        }
+        else{
+            if (s[i] === ")" && stack[0] === "("){
+                stack.shift();
+            } else if (s[i] === "}" && stack[0] === "{"){
+                stack.shift();
+            } else if (s[i] === "]" && stack[0] === "["){
+                stack.shift();
+            } else {
+                stack.push(s[i]);
+            }
+        }
+    }
+    
+    return stack.length === 0;
+};
 
