@@ -175,3 +175,17 @@ var removeElement = function(nums, val) {
     
     return nums.length;
 };
+
+var strStr = function(haystack, needle) {
+    let str=haystack.split(needle);
+
+    if(needle==''){
+        return 0;
+    }else if(str.length==1){
+        return -1
+    }else if(str.length==0){
+        return 0;
+    }else{
+        return str[0].length;
+    }
+};
