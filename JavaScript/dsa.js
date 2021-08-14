@@ -205,3 +205,17 @@ var searchInsert = function(nums, target) {
     }
     return nums[mid] >= target ? mid : mid + 1
 };
+
+var maxSubArray = function(nums) {
+    let maxAns = nums[0];
+    let prevMax = nums[0];
+    
+    for (let i = 1; i < nums.length; i++){
+        prevMax = Math.max(nums[i], nums[i] + prevMax);
+        if (prevMax > maxAns){
+            maxAns = prevMax;
+        }
+    }
+    
+    return maxAns;
+};
