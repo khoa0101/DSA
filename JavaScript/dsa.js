@@ -219,3 +219,14 @@ var maxSubArray = function(nums) {
     
     return maxAns;
 };
+
+var lengthOfLastWord = function(s) {
+    let str = s.split(' ');
+    for (let i = 0; i < str.length; i++){
+        if (str[i].length < 1){
+            str.splice(i, 1);
+            i--;
+        }
+    }
+    return str[str.length - 1].length;
+};
