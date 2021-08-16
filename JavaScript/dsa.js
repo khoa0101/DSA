@@ -257,3 +257,24 @@ var addBinary = function(a, b) {
     
     return total;
 };
+
+var mySqrt = function(x) {
+    if (x < 2) return x;
+    let answer = 2;
+    while (answer * answer <= x){
+        answer++;
+    }
+    return --answer;
+};
+
+var climbStairs = function(n) {
+    let table = new Array(n + 1);
+    table[0] = 1;
+    table[1] = 1;
+    
+    for(let i = 2; i < table.length; i++){
+        table[i] = table[i - 1] + table[i - 2];
+    }
+    
+    return table[table.length - 1];
+};
