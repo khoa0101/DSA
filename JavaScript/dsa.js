@@ -234,3 +234,26 @@ var lengthOfLastWord = function(s) {
 var plusOne = function(digits) {
     return (BigInt(digits.join('')) + 1n).toString().split('');
 };
+
+var addBinary = function(a, b) {
+    // Built-in version
+    // let num1 = BigInt(`0b${a}`), num2 = BigInt(`0b${b}`);
+    // return (num1 + num2).toString(2);
+
+    // Brute force version
+        let i = a.length - 1;
+    let j = b.length - 1;
+    let total = '';
+    let remainder = 0;
+    
+    while (i >= 0 || j >= 0 || remainder){
+        const digitSum = (+a[i] || 0) + (+b[j] || 0) + remainder;
+        remainder = Math.floor(digitSum / 2);
+        total = (digitSum % 2) + total; 
+        
+        i--;
+        j--;
+    }
+    
+    return total;
+};
