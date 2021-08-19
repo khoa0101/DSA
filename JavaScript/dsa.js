@@ -306,3 +306,19 @@ var merge = function(nums1, m, nums2, n) {
     nums1.push(...nums2);
     nums1.sort((a, b) => a - b);
 };
+
+var traverseRecursion = function(node, arr){
+    if (!node) return;
+    if (node){
+        traverseRecursion(node.left, arr);
+        arr.push(node.val);
+        traverseRecursion(node.right, arr);    
+    }
+    return;    
+}
+
+var inorderTraversal = function(root) {
+    let arr = [];
+    traverseRecursion(root,arr);
+    return arr;
+};
