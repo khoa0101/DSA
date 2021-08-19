@@ -156,7 +156,7 @@ var removeDuplicates = function(nums) {
     for (let i = 0; i < nums.length; i++){
         if (i + 1 < nums.length && nums[i] === nums[i + 1] && nums[i] != undefined){
             nums.splice(i, 1);
-            nums.push(undefined);
+            // nums.push(undefined);
             count++;
             i--;
         }
@@ -277,4 +277,25 @@ var climbStairs = function(n) {
     }
     
     return table[table.length - 1];
+};
+
+var deleteDuplicates = function(head) {
+    if (head){
+        let currentNode = head.next;
+        let previousNode = head;
+
+        while (currentNode){
+            if (currentNode.val === previousNode.val){
+                previousNode.next = currentNode.next;
+                currentNode = currentNode.next;
+            } else {
+                previousNode = previousNode.next;
+                if (currentNode){
+                    currentNode = currentNode.next;
+                }
+            }
+        }
+    }
+    
+    return head;
 };
