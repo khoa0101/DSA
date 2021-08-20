@@ -362,3 +362,13 @@ var isSymmetric = function(root) {
     
     return symmetry;
 };
+
+var maxDepth = function(root) {
+    function findDepth(root, count){
+        if(!root){
+            return count;
+        }
+        return Math.max(findDepth(root.left, count+1), findDepth(root.right,count+1));
+    }
+    return findDepth(root, 0);
+};
