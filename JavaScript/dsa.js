@@ -322,3 +322,29 @@ var inorderTraversal = function(root) {
     traverseRecursion(root,arr);
     return arr;
 };
+
+var isSameTree = function(p, q) {
+    if (!p && !q) return true;
+    if (!p && q || p && !q) return false;
+    
+    let result = true;
+    
+    let traverseTree = function(node1, node2){
+        if(node1.val != node2.val) result = false;
+        if (node1.left && node2.left) {
+            traverseTree(node1.left, node2.left)
+        } else if (!node1.left && node2.left || node1.left && !node2.left){
+            result = false;
+        }
+        
+        if (node1.right && node2.right){
+            traverseTree(node1.right, node2.right)
+        } else if (!node1.right && node2.right || node1.right && !node2.right){
+            result = false;
+        }
+    }
+    
+    traverseTree(p, q);
+    return result;
+        
+};
