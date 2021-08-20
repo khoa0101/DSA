@@ -348,3 +348,17 @@ var isSameTree = function(p, q) {
     return result;
         
 };
+
+var isSymmetric = function(root) {
+    let checkSymmetry = function (left, right){
+        if (!left && !right) return true;
+        if (!left && right || !right && left) return false;
+        if (left.val !== right.val) return false;
+        
+        return checkSymmetry(left.left, right.right) && checkSymmetry(left.right, right.left);
+    }
+    
+    let symmetry = checkSymmetry(root.left, root.right);
+    
+    return symmetry;
+};
