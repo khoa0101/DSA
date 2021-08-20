@@ -372,3 +372,33 @@ var maxDepth = function(root) {
     }
     return findDepth(root, 0);
 };
+
+var hasCycle = function(head) { 
+    // object set to check if visited 
+    // traverse the list
+    // if currentNode reaches null, return false
+    // if hit a visited node, return true
+    if (!head) return false;
+    
+    let set = new Set();
+    if (head.next){
+        let currentNode = head;
+        
+        while (currentNode){
+            if (!set.has(currentNode)){
+                set.add(currentNode);
+            }
+
+            if (currentNode.next){
+                if (set.has(currentNode.next)) return true;  
+            } else {
+                return false;
+            }
+            
+            currentNode = currentNode.next;
+        }
+        
+    } else {
+        return false;
+    }
+};
