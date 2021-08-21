@@ -307,7 +307,7 @@ var merge = function(nums1, m, nums2, n) {
     nums1.sort((a, b) => a - b);
 };
 
-var traverseRecursion = function(node, arr){
+let traverseRecursion = function(node, arr){
     if (!node) return;
     if (node){
         traverseRecursion(node.left, arr);
@@ -401,4 +401,15 @@ var hasCycle = function(head) {
     } else {
         return false;
     }
+};
+
+var sortedArrayToBST = function(nums, start = 0, end = nums.length - 1) {
+    if (start > end) return null;
+    
+    const mid = (start + end) >> 1;
+    return new TreeNode(
+        nums[mid],
+        sortedArrayToBST(nums, start, mid - 1),
+        sortedArrayToBST(nums, mid + 1, end)
+    );
 };
