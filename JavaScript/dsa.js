@@ -413,3 +413,20 @@ var sortedArrayToBST = function(nums, start = 0, end = nums.length - 1) {
         sortedArrayToBST(nums, mid + 1, end)
     );
 };
+
+var isBalanced = function(root) {
+    function helper(root){
+        if(root==null) return 0;
+        
+        let left = helper(root.left);
+        let right = helper(root.right);
+        
+        if(left == null) return null;
+        if(right == null) return null;
+        
+        if(Math.abs(left-right) > 1) return null;
+        
+        return Math.max(left, right) + 1;
+    }
+    return helper(root) != null;;
+};
