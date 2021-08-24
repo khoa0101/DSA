@@ -430,3 +430,29 @@ var isBalanced = function(root) {
     }
     return helper(root) != null;;
 };
+
+var minDepth = function(root) {
+    if(!root) return 0;
+    if(!root.left && !root.right) return 1;
+    let sum = 0;
+    let min = Number.MAX_VALUE;
+    
+    let countDepth = function(node, count){
+        count++;
+        if(!node.left && !node.right) {
+            if (count < min){
+                min = count;   
+            }
+            return;
+        }
+        
+        if(node.left)
+            countDepth(node.left, count);
+        if(node.right)
+            countDepth(node.right, count);
+    }
+    
+    countDepth(root, sum);
+    
+    return min;
+};
