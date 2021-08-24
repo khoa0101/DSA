@@ -485,9 +485,30 @@ var hasPathSum = function(root, targetSum) {
     
     if (!root.left || !root.right){
         let sum = root.val;
-        // sum += (root.left ? root.left.val : root.right.val);
         return addLeaf((root.left ? root.left : root.right), sum);
     }
     
     return addLeaf(root);
 };
+
+var generate = function(numRows) {
+    const res = [];
+    let prevRow;
+    
+    for (let i = 1; i <= numRows; i++) {
+        const row = new Array(i).fill(1);
+
+        if (prevRow) {
+            for (let j = 1; j < prevRow.length; j++) {
+                const cs = prevRow[j] + prevRow[j - 1];
+                row[j] = cs;
+            }
+        }
+        
+        res.push(row);
+        prevRow = row;
+    }
+    
+    return res;
+};
+
