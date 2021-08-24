@@ -456,3 +456,38 @@ var minDepth = function(root) {
     
     return min;
 };
+
+var hasPathSum = function(root, targetSum) {
+    if (!root) return false;
+    if (!root.left && !root.right){
+        return root.val === targetSum;    
+    };
+    
+    let addLeaf = function(node, currentSum = 0){
+        if (!node){
+            return currentSum === targetSum;
+        }
+        currentSum += node.val;
+        console.log(currentSum);
+        if (currentSum === targetSum){
+            if (node.left){
+                return addLeaf(node.left, currentSum);
+            }
+            if (node.right){
+                return addLeaf(node.right, currentSum);
+            }
+            if (!node.left && !node.right){
+                return true;
+            }
+        }
+        return addLeaf(node.left, currentSum) || addLeaf(node.right, currentSum);
+    }
+    
+    if (!root.left || !root.right){
+        let sum = root.val;
+        // sum += (root.left ? root.left.val : root.right.val);
+        return addLeaf((root.left ? root.left : root.right), sum);
+    }
+    
+    return addLeaf(root);
+};
