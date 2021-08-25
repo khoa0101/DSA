@@ -545,3 +545,14 @@ var maxProfit = function(prices) {
     
     return profit;
 };
+
+var maxProfit = function(prices) {
+  let d_ik0 = 0;
+  let d_ik1 = -Infinity;
+  
+  for(let i=0;i<prices.length;i++){
+    d_ik0 = Math.max(d_ik0 , d_ik1 + prices[i]);
+    d_ik1 = Math.max(d_ik1, d_ik0 - prices[i]);
+  }
+  return d_ik0;
+};
