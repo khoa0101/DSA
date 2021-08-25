@@ -512,3 +512,36 @@ var generate = function(numRows) {
     return res;
 };
 
+var getRow = function(rowIndex) {
+    let triangle = [[1], [1, 1]];
+    let i = 2;
+    
+    if (rowIndex > 1){
+        while (i <= rowIndex){
+            let row = new Array(i + 1).fill(1);
+            for (let j = 1; j < i; j++){
+                row[j] = triangle[i - 1][j - 1] + triangle[i - 1][j];
+            }
+            triangle.push(row);
+            i++;
+        }
+    }
+    
+    return triangle[rowIndex];
+};
+
+var maxProfit = function(prices) {
+    let profit = 0, min = prices[0];
+    
+    for (let i = 0; i < prices.length; i++){
+        if(prices[i] < min){
+            min = prices[i];
+        }
+        
+        if(profit < (prices[i] - min)){
+            profit = prices[i] - min;
+        }
+    }
+    
+    return profit;
+};
