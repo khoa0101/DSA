@@ -570,3 +570,35 @@ var isPalindrome = function(s) {
     
     return true;
 };
+
+var singleNumber = function(nums) {
+    let map = {};
+    
+    for (let i in nums){
+        if (map[nums[i]]){
+            map[nums[i]].push(i);
+        } else {
+            map[nums[i]] = [i];
+        }
+    }
+    
+    for (let i in map){
+        if (map[i].length < 2) return i;
+    }
+};
+
+var preorderTraversal = function(root) {
+    let result = [];
+    
+    function traversal(root) {
+         if(!root) {
+            return
+          }
+        result.push(root.val)
+        traversal(root.left);
+        traversal(root.right)
+     }
+    
+    traversal(root);
+    return result;    
+};
