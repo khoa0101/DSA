@@ -556,3 +556,17 @@ var maxProfit = function(prices) {
   }
   return d_ik0;
 };
+
+var isPalindrome = function(s) {
+    let cleanString = s.toLowerCase().replace(/[^0-9a-z]/g, "");
+    
+    let i = 0, j = cleanString.length - 1;
+    
+    while(i <= j){
+        if (cleanString[i] !== cleanString[j]) return false;
+        i++;
+        j--;
+    }
+    
+    return true;
+};
