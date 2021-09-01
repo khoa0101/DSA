@@ -603,6 +603,22 @@ var preorderTraversal = function(root) {
     return result;    
 };
 
+var postorderTraversal = function(root) {
+    let result = [];
+    
+    let helper = function(node){
+        if (node){
+            helper(node.left);
+            helper(node.right);
+            result.push(node.val);
+        } else return;
+    }
+    
+    helper(root);
+    
+    return result;
+};
+
 var getIntersectionNode = function(headA, headB) {
     let currentNodeA = headA, currentNodeB = headB;
     let sizeA = 0, sizeB = 0;
