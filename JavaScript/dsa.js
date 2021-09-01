@@ -602,3 +602,49 @@ var preorderTraversal = function(root) {
     traversal(root);
     return result;    
 };
+
+var getIntersectionNode = function(headA, headB) {
+    let currentNodeA = headA, currentNodeB = headB;
+    let sizeA = 0, sizeB = 0;
+    
+    while(currentNodeA){
+        sizeA++;
+        if (currentNodeA) currentNodeA = currentNodeA.next;
+    }
+    
+    while(currentNodeB){
+        sizeB++;
+        if (currentNodeB) currentNodeB = currentNodeB.next;
+    }
+    
+    let short, long, sizeDiff;
+    
+    if (sizeA < sizeB){
+        short = headA;
+        long = headB;
+        sizeDiff = sizeB - sizeA; 
+    } else {
+        short = headB;
+        long = headA;
+        sizeDiff = sizeA - sizeB;
+    }
+    
+    while (sizeDiff > 0){
+        sizeDiff--;
+        if (long) long = long.next;
+    }
+    
+    while (short && long){
+        if (short === long) return short;
+        
+        if (short){
+            short = short.next;
+        }
+        if (long){
+            long = long.next;
+        }
+    }
+    
+    return null;
+    
+};
