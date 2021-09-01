@@ -702,7 +702,7 @@ MinStack.prototype.getMin = function() {
     return min;
 };
 
-var twoSum = function(numbers, target) {
+var twoSumSorted = function(numbers, target) {
 
     let sum, i = 0, j = numbers.length - 1;
 
@@ -718,4 +718,40 @@ var twoSum = function(numbers, target) {
             j--;
         }
     }
+};
+
+var convertToTitle = function(columnNumber) {
+    let letter = 0;
+    let string = "";
+    
+    while(columnNumber > 0){
+        letter = columnNumber % 26;
+        
+        if (letter === 0) letter = 26;
+        
+        columnNumber = (columnNumber - letter) / 26;
+        string = String.fromCharCode(letter + 64) + string; 
+    }
+    
+    return string;
+};
+
+var majorityElement = function(nums) {
+    let map = {};
+    
+    for(let i of nums){
+        if (map[i]) map[i]++;
+        else map[i] = 1;
+    }
+    
+    let max = nums[0];
+    
+    for(let i in map){
+        if (map[i] > map[max]){
+            console.log(max);
+            max = i;
+        }
+    }
+    
+    return max;
 };
