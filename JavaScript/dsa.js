@@ -755,3 +755,38 @@ var majorityElement = function(nums) {
     
     return max;
 };
+
+var titleToNumber = function(columnTitle) {
+    let columnNum = columnTitle[0].charCodeAt() - 64; 
+        for(let i = 1; i < columnTitle.length; i++){
+        columnNum = (columnNum)*26 + (columnTitle[i].charCodeAt()-64) 
+    }
+    return columnNum;
+};
+
+var reverseBits = function(n) {
+    let reversed = `${"0".repeat(32 - n.toString(2).length)}${n.toString(2)}`
+        .split("").reverse().join("");
+    
+    let num = 0;
+    for (let i = 0; i < 32; i++) {
+        if (parseInt(reversed[reversed.length - 1 - i])) {
+            num += Math.pow(2, i)
+        }
+    }
+    return num;
+};
+
+var hammingWeight = function(n) {
+    let count = 0;
+    
+    while(n > 0){
+        if (n % 2 > 0){
+            count++;
+        }
+        
+        n = Math.floor(n / 2);
+    }
+    
+    return count;
+};
