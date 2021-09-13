@@ -790,3 +790,20 @@ var hammingWeight = function(n) {
     
     return count;
 };
+
+var isHappy = function(n) {
+    let seen = new Set();
+    
+    while (!seen.has(n)){
+        seen.add(n);
+        let temp = String(n).split('');
+        n = 0;
+        for (let i of temp){
+            n += parseInt(i) * parseInt(i);
+        }
+        
+        if (n === 1) return true;
+    }
+    
+    return false;
+};
