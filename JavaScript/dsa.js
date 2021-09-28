@@ -861,3 +861,25 @@ var isIsomorphic = function(s, t) {
     
     return true;
 };
+
+var moveZeroes = function(nums) {
+    // have a counter for all zeros
+    // delete 0
+    // push in the number of zeros to the end of the array
+    if (nums === [0]) return nums;
+    let counter = 0;
+    for (let i = 0; i < nums.length; i++){
+        if (nums[i] === 0){
+            counter++;
+            nums.splice(i, 1);
+            i--;
+        }
+    }
+    
+    for (let i = 0; i < counter; i++){
+        nums.push(0);
+    }
+    
+    return nums;
+    
+};
