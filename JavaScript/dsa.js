@@ -817,3 +817,47 @@ var removeElements = function(head, val) {
       }
       return head
 };
+
+var countPrimes = function(n) {
+    const isPrime = function(num){
+        if (num < 2){
+            return false;
+        }
+        if (num % 2 === 0) {
+            return num === 2
+        }
+        for (let i = 3; i <= Math.sqrt(num); i += 2) {
+            if (num % i === 0) return false;
+        }
+        return true;
+    }
+    
+    let count = 0;
+    
+    for (let i = 2; i < n; i++){
+        if (isPrime(i)) count++;
+    }
+    
+    return count;
+};
+
+var isIsomorphic = function(s, t) {
+    if (s.length != t.length) return false;
+    
+    const hash = {};
+    
+    for(let i = 0; i < s.length; i++){
+        if (hash[s[i]]){
+            if (hash[s[i]] !== t[i]){
+                return false;
+            }
+        } else {
+            if (Object.values(hash).includes(t[i])){
+                return false;
+            }
+            hash[s[i]] = t[i]
+        }
+    }
+    
+    return true;
+};
