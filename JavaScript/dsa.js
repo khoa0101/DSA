@@ -891,3 +891,16 @@ var reverseList = function(head, prev = null) {
     
     return reverseList(next, head)
 };
+
+var containsDuplicate = function(nums) {
+    let map = {};
+    
+    for (let i of nums){
+        if (map[i]) return true;
+        else {
+            map[i] = true;
+        }
+    }
+    
+    return false;
+};
