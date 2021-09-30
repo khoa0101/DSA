@@ -904,3 +904,18 @@ var containsDuplicate = function(nums) {
     
     return false;
 };
+
+var containsNearbyDuplicate = function(nums, k) {
+    let map = new Map()
+    let indexDiff
+    for(let i in nums){
+        if(map.has(nums[i])) {
+             indexDiff = Math.abs(map.get(nums[i]) - i) 
+             if(indexDiff<=k) return true
+        }
+        
+        map.set(nums[i], i)
+    }
+    
+    return false
+};
