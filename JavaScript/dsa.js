@@ -952,3 +952,15 @@ MyStack.prototype.top = function() {
 MyStack.prototype.empty = function() {
     return this.stack.length === 0;
 };
+
+var invertTree = function(root) {
+    if (root){
+        let temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+        invertTree(root.left);
+        invertTree(root.right);
+    }
+    
+    return root;
+};
