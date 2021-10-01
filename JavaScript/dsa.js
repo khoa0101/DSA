@@ -989,6 +989,39 @@ var summaryRanges = function(nums) {
 var isPowerOfTwo = function(n) {
     if (n <= 0)
         return false;
-    return (2**31) % n===0
+    return (2 ** 31) % n===0
+};
+
+var MyQueue = function() {
+    this.queue = [];
+};
+
+/** 
+ * @param {number} x
+ * @return {void}
+ */
+MyQueue.prototype.push = function(x) {
+    this.queue.push(x);
+};
+
+/**
+ * @return {number}
+ */
+MyQueue.prototype.pop = function() {
+    return this.queue.shift();
+};
+
+/**
+ * @return {number}
+ */
+MyQueue.prototype.peek = function() {
+    return this.queue[0];
+};
+
+/**
+ * @return {boolean}
+ */
+MyQueue.prototype.empty = function() {
+    return this.queue.length === 0;
 };
 
