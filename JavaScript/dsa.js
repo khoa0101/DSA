@@ -905,17 +905,50 @@ var containsDuplicate = function(nums) {
     return false;
 };
 
-var containsNearbyDuplicate = function(nums, k) {
+var containsNearbyDuplicate = function (nums, k) {
     let map = new Map()
     let indexDiff
-    for(let i in nums){
-        if(map.has(nums[i])) {
-             indexDiff = Math.abs(map.get(nums[i]) - i) 
-             if(indexDiff<=k) return true
+    for (let i in nums) {
+        if (map.has(nums[i])) {
+            indexDiff = Math.abs(map.get(nums[i]) - i)
+            if (indexDiff <= k) return true
         }
-        
+
         map.set(nums[i], i)
     }
-    
+
     return false
+};
+
+var MyStack = function() {
+    this.stack = []
+};
+
+/** 
+ * @param {number} x
+ * @return {void}
+ */
+MyStack.prototype.push = function(x) {
+    this.stack.push(x);
+};
+
+/**
+ * @return {number}
+ */
+MyStack.prototype.pop = function() {
+    return this.stack.pop();
+};
+
+/**
+ * @return {number}
+ */
+MyStack.prototype.top = function() {
+    return this.stack[this.stack.length - 1];
+};
+
+/**
+ * @return {boolean}
+ */
+MyStack.prototype.empty = function() {
+    return this.stack.length === 0;
 };
