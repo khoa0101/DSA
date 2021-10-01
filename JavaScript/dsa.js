@@ -985,3 +985,10 @@ var summaryRanges = function(nums) {
     
     return result;
 };
+
+var isPowerOfTwo = function(n) {
+    if (n <= 0)
+        return false;
+    return (2**31) % n===0
+};
+
