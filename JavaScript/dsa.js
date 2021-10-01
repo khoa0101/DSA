@@ -1025,3 +1025,32 @@ MyQueue.prototype.empty = function() {
     return this.queue.length === 0;
 };
 
+var addTwoNumbers = function(l1, l2) {
+    let num1 = "";
+    let num2 = "";
+    let curr1 = l1;
+    let curr2 = l2;
+    
+    while(curr1){
+        num1 = curr1.val + num1; 
+        curr1 = curr1.next;
+    }
+    
+    while(curr2){
+        num2 = curr2.val + num2;
+        curr2 = curr2.next;
+    }
+    
+    let result = (BigInt(num1) + BigInt(num2)).toString().split('').reverse();
+    
+    let l3 = new ListNode(result[0]);
+    let previous = l3;
+    
+    for (let i = 1; i < result.length; i++){
+        let curr = new ListNode(result[i]);
+        previous.next = curr;
+        previous = previous.next;
+    }
+    
+    return l3;
+};
