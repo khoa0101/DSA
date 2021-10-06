@@ -1082,3 +1082,14 @@ var lowestCommonAncestor = function(root, p, q) {
         return lowestCommonAncestor(root.right, p, q)
     }
 };
+
+var deleteNode = function(node) {
+    let lastNode = node;
+    let currentNode = node;
+    while (currentNode.next) {
+        currentNode.val = currentNode.next.val;
+        lastNode = currentNode;
+        currentNode = currentNode.next;
+    }
+    lastNode.next = null;
+};
