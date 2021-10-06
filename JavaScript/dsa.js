@@ -1055,7 +1055,7 @@ var addTwoNumbers = function(l1, l2) {
     return l3;
 };
 
-var isPalindrome = function(head) {
+var isPalindromeList = function(head) {
     let result = [];
     let currentNode = head;
     
@@ -1073,3 +1073,12 @@ var isPalindrome = function(head) {
     return true;
 };
 
+var lowestCommonAncestor = function(root, p, q) {
+    if ((p.val <= root.val && q.val >= root.val) || (q.val <= root.val && p.val >= root.val) ){
+        return root;
+    } else if (p.val < root.val && q.val < root.val) {
+        return lowestCommonAncestor(root.left, p, q)
+    } else if (p.val > root.val && q.val > root.val) {
+        return lowestCommonAncestor(root.right, p, q)
+    }
+};
