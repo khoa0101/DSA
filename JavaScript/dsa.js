@@ -1054,3 +1054,22 @@ var addTwoNumbers = function(l1, l2) {
     
     return l3;
 };
+
+var isPalindrome = function(head) {
+    let result = [];
+    let currentNode = head;
+    
+    while (currentNode){
+        result.push(currentNode.val);
+        currentNode = currentNode.next;
+    }
+    
+    let reverse = result.slice().reverse();
+    
+    for (let i = 0; i < result.length; i++){
+        if (result[i] !== reverse[i]) return false
+    }
+    
+    return true;
+};
+
