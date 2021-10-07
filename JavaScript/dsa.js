@@ -1093,3 +1093,22 @@ var deleteNode = function(node) {
     }
     lastNode.next = null;
 };
+
+var isAnagram = function(s, t) {
+    if (s.length !== t.length) return false;
+    
+    let map_1 = {}, map_2 = {};
+    
+    for (let i = 0; i < s.length; i++){
+       if(map_1[s[i]]) map_1[s[i]] += 1;
+        else map_1[s[i]] = 1;
+       if(map_2[t[i]]) map_2[t[i]] += 1;
+        else map_2[t[i]] = 1;
+    }
+    
+    for (let i in map_1){
+        if (map_1[i] !== map_2[i]) return false;
+    }
+    
+    return true;
+};
