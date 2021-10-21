@@ -1112,3 +1112,12 @@ var isAnagram = function(s, t) {
     
     return true;
 };
+
+var binaryTreePaths = function(root, paths = [], path = []) {
+    path.push(root.val);
+    if (!root.right && !root.left) paths.push(path.join('->'));
+    root.left && binaryTreePaths(root.left, paths, path);
+    root.right && binaryTreePaths(root.right, paths, path);
+    path.pop();
+    return paths;
+};
