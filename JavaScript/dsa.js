@@ -1121,3 +1121,8 @@ var binaryTreePaths = function(root, paths = [], path = []) {
     path.pop();
     return paths;
 };
+
+var addDigits = function(num) {
+    if (num < 10) return num;
+    return num - (Math.floor(num / 9)) * 9 || 9;
+};
