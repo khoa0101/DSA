@@ -1170,3 +1170,27 @@ var solution = function(isBadVersion) {
         return l;
     };
 };
+
+var wordPattern = function(pattern, s) {
+    let map = {};
+    let visited = [];
+    let arr = s.split(" ");
+    
+    if (pattern.length !== arr.length) return false;
+    
+    for (let i = 0; i < arr.length; i++){
+        if (map[arr[i]]){
+            if (map[arr[i]] !== pattern[i]) return false;
+        } else {
+            if (!visited.includes(pattern[i])) {
+                map[arr[i]] = pattern[i];
+                visited.push(pattern[i]);
+            }
+            else return false;
+        }
+    }
+    
+    console.log(map, visited)
+    
+    return true;
+};
