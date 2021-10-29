@@ -1194,3 +1194,8 @@ var wordPattern = function(pattern, s) {
     
     return true;
 };
+
+var canWinNim = function(n) {
+    return n > 0 ? n % 4 : false ;   
+};
+
