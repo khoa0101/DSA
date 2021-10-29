@@ -1199,3 +1199,19 @@ var canWinNim = function(n) {
     return n > 0 ? n % 4 : false ;   
 };
 
+var NumArray = function(nums) {
+    this.array = nums;
+};
+
+/** 
+ * @param {number} left 
+ * @param {number} right
+ * @return {number}
+ */
+NumArray.prototype.sumRange = function(left, right) {
+    let sum = 0;
+    for (let i =left; i <= right; i++){
+        sum += this.array[i];
+    }
+    return sum;
+};
