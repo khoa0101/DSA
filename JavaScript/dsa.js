@@ -1232,3 +1232,11 @@ var isPowerOfFour = function(n) {
     
     return n === 1;
 };
+
+var reverseString = function(s) {
+    for (let i = 0; i < Math.floor(s.length / 2); i++){
+        let temp = s[i], switchIndex = s.length - 1 - i;
+        s[i] = s[switchIndex];
+        s[switchIndex] = temp;
+    }
+};
