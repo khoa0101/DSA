@@ -1260,3 +1260,23 @@ var reverseVowels = function(s) {
     
     return s.join('');
 };
+
+var intersection = function(nums1, nums2) {
+    let result = [];
+    let map = {};
+    
+    for (let i of nums1){
+        if (!map[i]){
+            map[i] = true;
+        }
+    }
+    
+    for (let i of nums2){
+        if (map[i]){
+            result.push(+i);
+            map[i] = false;
+        }
+    }
+    
+    return result;
+};
