@@ -1280,3 +1280,22 @@ var intersection = function(nums1, nums2) {
     
     return result;
 };
+
+var intersect = function(nums1, nums2) {
+    let result = [];
+    let map = {};
+    
+    for (let i of nums1){
+        if (!map[i]) map[i] = 1;
+        else map[i]++;
+    }
+    
+    for (let i of nums2){
+        if (map[i] > 0){
+            result.push(+i);
+            map[i]--;
+        }
+    }
+    
+    return result;
+};
