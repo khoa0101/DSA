@@ -1240,3 +1240,23 @@ var reverseString = function(s) {
         s[switchIndex] = temp;
     }
 };
+
+var reverseVowels = function(s) {
+    s = s.split('');
+    let i = 0; j = s.length - 1;
+    let vowels = "aeiouAEIOU";
+    while(i <= j){
+        if (vowels.includes(s[i]) && vowels.includes(s[j])){
+            let temp = s[i];
+            s[i] = s[j];
+            s[j] = temp;
+            i++;
+            j--;
+        } else {
+            if (!vowels.includes(s[i])) i++;
+            if (!vowels.includes(s[j])) j--;
+        }
+    }
+    
+    return s.join('');
+};
