@@ -1299,3 +1299,25 @@ var intersect = function(nums1, nums2) {
     
     return result;
 };
+
+var lengthOfLongestSubstring = function(s) {
+    let visited = {};
+    let word = [];
+    let max = 0;
+    
+    for (let i = 0; i < s.length; i++){
+        if (!visited[s[i]] === undefined) {
+            visited[s[i]] = i;
+            word.push(s[i]); 
+        } else {
+            word = word.slice(word.indexOf(s[i]) + 1);
+            word.push(s[i]);
+        }
+        
+        if (max < word.length){
+            max = word.length;
+        }
+    }
+    
+    return max;
+};
