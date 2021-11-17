@@ -1345,3 +1345,15 @@ var findTheDifference = function(s, t) {
     
     return t[s.length];
 };
+
+var isSubsequence = function(s, t) { //axc, ahbgdc
+    let j = 0;
+    
+    for (let i = 0; i < t.length; i++){ // 5
+        if (t[i] === s[j]){
+            j++;
+        } 
+    }
+    
+    return (s.length === j);
+};
