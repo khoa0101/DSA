@@ -1321,3 +1321,17 @@ var lengthOfLongestSubstring = function(s) {
     
     return max;
 };
+
+var firstUniqChar = function(s) {
+    let map = {};
+    for (let c of s){
+        if (map[c]) map[c]++;
+        else map[c] = 1;
+    }
+    
+    for (let i in s){
+        if (map[s[i]] === 1) return i; 
+    }
+    
+    return -1;
+};
