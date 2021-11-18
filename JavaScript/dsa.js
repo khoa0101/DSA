@@ -1357,3 +1357,18 @@ var isSubsequence = function(s, t) { //axc, ahbgdc
     
     return (s.length === j);
 };
+
+var sumOfLeftLeaves = function(root) {
+    let sum = 0;
+    
+    const traverse = function(node, isLeft = false){
+        if (node){
+            if (!node.left && !node.right && isLeft) sum += node.val;
+            return traverse(node.left, true) + traverse(node.right, false);
+        }
+    }
+    
+    traverse(root);
+    
+    return sum;
+};
