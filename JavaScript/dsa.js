@@ -1406,3 +1406,22 @@ var longestPalindrome = function(s) {
 function isEven(num) {
     return !(num % 2);
 };
+
+var fizzBuzz = function(n) {
+    let result = [];
+    
+    for (let i = 0; i < n; i++){
+        let num = i + 1;
+        if (num % 3 === 0 && num % 5 === 0){
+            result.push("FizzBuzz");
+        } else if (num % 3 === 0){
+            result.push("Fizz");
+        } else if (num % 5 === 0){
+            result.push("Buzz");
+        } else {
+            result.push(`${num}`);
+        }
+    }
+    
+    return result;
+};
