@@ -1388,3 +1388,21 @@ var toHex = function(num) {
     return str
     
 };
+
+var longestPalindrome = function(s) {
+    let output = 0, letterCount = {};
+    for (let letter of s) letterCount[letter] = letterCount[letter] + 1 || 1;
+    let letters = Object.keys(letterCount);
+    for (let letter of letters) {
+        if (letterCount[letter] > 1) {
+            if (isEven(letterCount[letter])) output += letterCount[letter];
+            else output += letterCount[letter] - 1;
+        }
+    } 
+    console.log(letterCount);
+    return s.length - output >= 1 ? output + 1 : output;    
+};
+
+function isEven(num) {
+    return !(num % 2);
+};
