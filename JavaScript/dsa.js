@@ -1425,3 +1425,19 @@ var fizzBuzz = function(n) {
     
     return result;
 };
+
+var thirdMax = function(nums) {
+    let set = new Set();
+    let max = 0;
+    
+    for (let n of nums){
+        set.add(n);
+    }
+    
+    let first = Math.max(...set);
+    if (set.size < 3) return first;
+    set.delete(first);
+    first = Math.max(...set);
+    set.delete(first);
+    return Math.max(...set);
+};
