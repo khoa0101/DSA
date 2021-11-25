@@ -1449,7 +1449,6 @@ var addStrings = function(num1, num2) {
     
     while (i >= 0 || j >= 0){
         let sum = (num1[i]? +num1[i] : 0) + (num2[j]? +num2[j] : 0) + remainder;
-        // console.log(num1[i], num2[j], sum);
         if (sum > 9){
             sum -= 10;
             remainder = 1;
@@ -1463,4 +1462,13 @@ var addStrings = function(num1, num2) {
     
     return remainder > 0 ? 1 + result : result;
     
+};
+
+var countSegments = function(s) {
+    let split = s.split(" ");
+    let count = 0;
+    for (let seg of split){
+        if (seg === "") count++;
+    }
+    return split.length - count;
 };
