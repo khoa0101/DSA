@@ -1441,3 +1441,26 @@ var thirdMax = function(nums) {
     set.delete(first);
     return Math.max(...set);
 };
+
+var addStrings = function(num1, num2) {
+    let result = "";
+    
+    let i = num1.length - 1, j = num2.length - 1, remainder = 0;
+    
+    while (i >= 0 || j >= 0){
+        let sum = (num1[i]? +num1[i] : 0) + (num2[j]? +num2[j] : 0) + remainder;
+        // console.log(num1[i], num2[j], sum);
+        if (sum > 9){
+            sum -= 10;
+            remainder = 1;
+        } else {
+            remainder = 0;
+        }
+        result = sum + result;
+        i--;
+        j--;
+    }
+    
+    return remainder > 0 ? 1 + result : result;
+    
+};
