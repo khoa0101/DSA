@@ -1506,3 +1506,11 @@ var findDisappearedNumbers = function(nums) {
     
     return result;
 };
+
+var arrangeCoins = function(n) {
+    let result = 0;
+    while (n >= 0) {
+        n -= ++result;
+    }
+    return result - 1;
+};
