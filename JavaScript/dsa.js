@@ -1472,3 +1472,37 @@ var countSegments = function(s) {
     }
     return split.length - count;
 };
+
+var findDisappearedNumbers = function(nums) {
+    // nums = nums.sort((a, b) => a - b);
+    
+    let result = [];
+    
+    if (nums.length === 1) {
+    return nums[0] === 1 ?  [] :  [1];
+    }
+    
+    let i = 0; 
+    while (i < nums.length) {
+        if (nums[i] !== i + 1) {
+            let j = nums[i] - 1;
+            if (nums[i] !== nums[j]) {
+                const tmp = nums[j];
+                nums[j] = nums[i];
+                nums[i] = tmp;
+            }else {
+            i += 1;
+            }
+        }else {
+            i += 1;
+        }
+    }
+    
+    for (let i = 0; i < nums.length; i++){
+        if (nums[i] !== i + 1){
+            result.push(i + 1);
+        }
+    }
+    
+    return result;
+};
