@@ -1571,3 +1571,49 @@ var findComplement = function(num) {
     
     return compliment; 
 };
+
+var islandPerimeter = function(grid) {
+    let solution = 0; 
+    const row = grid.length; 
+    const col = grid[0].length;
+    
+    const visited = [];
+    for (var i = 0; i < row; i++) {
+          visited[i] = new Array(col).fill(false);
+    }
+        
+    for (let i = 0; i < row; i++) {
+        for (let j = 0; j < col; j++) {
+            if (grid[i][j] === 1) {
+                if (visited[i][j]) continue;
+                visited[i][j] = true;
+                bfs(i,j);
+            }
+        }
+    }
+    
+    function bfs(dy, dx) {
+        const direct = [[-1,0], [1,0], [0,-1], [0,1]];
+        const queue = [];
+        queue.push([dy, dx]);
+        
+        while (queue.length > 0) {
+            const current = queue.shift();
+            let count = 4;
+            for (let i = 0; i < 4; i++) {
+                console.log(count);
+                let ny = current[0] + direct[i][0];
+                let nx = current[1] + direct[i][1];
+                if (ny < 0 || nx < 0 || ny >= row || nx >= col) continue;
+                if (grid[ny][nx] === 0) continue;
+                count --;
+                if (visited[ny][nx]) continue;
+                visited[ny][nx] = true;
+                queue.push([ny, nx]);
+            }
+            solution += count;
+        }      
+    }
+    return solution;
+
+};
