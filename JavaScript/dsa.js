@@ -1528,3 +1528,24 @@ var findContentChildren = function(g, s) {
 var repeatedSubstringPattern = function(s) {
     return (s+s).slice(1, -1).includes(s);
 };
+
+var hammingDistance = function(x, y) {
+    let a = x ^ y;
+    let s = '';
+    let count = 0 ;
+    
+    while (a > 0){
+        s += a % 2;
+        a = Math.floor(a / 2);
+    }
+
+    s = s.split('').reverse().join('');
+
+    for(let i = 0; i < s.length; i++){
+        if (s[i] === '1'){
+            count += 1;
+        }
+    }
+    
+    return count ;
+};
