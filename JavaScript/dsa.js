@@ -1549,3 +1549,25 @@ var hammingDistance = function(x, y) {
     
     return count ;
 };
+
+var findComplement = function(num) {
+    let bits = '';
+    
+    while (num > 0){
+        bits = (num % 2) + bits;
+        num = Math.floor(num / 2);
+    }
+    
+    let compliment = '';
+    
+    for (let i of bits){
+        if (i === '0') compliment += 1;
+        else compliment += 0 ;
+    }
+    
+    console.log(bits, compliment);
+    
+    compliment = parseInt(compliment, 2);
+    
+    return compliment; 
+};
