@@ -1623,3 +1623,28 @@ var constructRectangle = function (area) {
     while (area % w != 0) w--;
     return [area / w, w]
 };
+
+var nextGreaterElement = function(nums1, nums2) {
+    let map = {};
+    let result = [];
+    
+    for (let i in nums2){
+        map[nums2[i]] = +i;
+    }
+    
+    for (let i of nums1){
+        let greater = i;
+        console.log(greater)
+        for (let j = +map[greater]; j < nums2.length; j++){
+            if (nums2[j] > greater){
+                result.push(nums2[j])
+                j = nums2.length;
+            }
+            if (j === nums2.length - 1){
+                result.push(-1);
+            }
+        }    
+    }
+    
+    return result;
+};
