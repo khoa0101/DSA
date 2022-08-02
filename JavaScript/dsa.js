@@ -1624,27 +1624,40 @@ var constructRectangle = function (area) {
     return [area / w, w]
 };
 
-var nextGreaterElement = function(nums1, nums2) {
+var nextGreaterElement = function (nums1, nums2) {
     let map = {};
     let result = [];
-    
-    for (let i in nums2){
+
+    for (let i in nums2) {
         map[nums2[i]] = +i;
     }
-    
-    for (let i of nums1){
+
+    for (let i of nums1) {
         let greater = i;
         console.log(greater)
-        for (let j = +map[greater]; j < nums2.length; j++){
-            if (nums2[j] > greater){
+        for (let j = +map[greater]; j < nums2.length; j++) {
+            if (nums2[j] > greater) {
                 result.push(nums2[j])
                 j = nums2.length;
             }
-            if (j === nums2.length - 1){
+            if (j === nums2.length - 1) {
                 result.push(-1);
             }
-        }    
+        }
+    }
+
+    return result;
+};
+
+var findPoisonedDuration = function(timeSeries, duration) {
+    let result = 0;
+    for (let i = 0; i < timeSeries.length - 1; i++){
+        if ((timeSeries[i] + duration) <= timeSeries[i + 1]){
+            result += duration;
+        } else {
+            result += timeSeries[i + 1] - timeSeries[i]
+        }
     }
     
-    return result;
+    return result + duration;
 };
